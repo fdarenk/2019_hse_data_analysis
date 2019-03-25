@@ -1,0 +1,31 @@
+---
+title: "hw1"
+author: "Алексей Федоренко"
+date: "2/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+```
+
+### 2.1
+
+```{r task_1}
+read.csv('https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data/students/fdarenk/hw2_Bayesian_inference/hw2_phoible.csv') %>%
+  mutate(cons.ratio = consonants/phonemes) %>%
+  filter(cons.ratio == max(cons.df$cons.ratio)) -> max.ratio.lng
+as.character(max.ratio.lng[1,1])
+```
+
+### 2.2
+```{r task_2}
+read.csv('https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data/students/fdarenk/hw2_Bayesian_inference/hw2_phoible.csv') %>%
+  mutate(cons.ratio = consonants/phonemes) %>%
+  arrange(cons.ratio) -> cons.data
+
+α = 9.300246, β = 4.4545
+
+```

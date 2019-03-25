@@ -1,0 +1,25 @@
+---
+title: "hw1"
+author: "Алексей Федоренко"
+date: "2/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+### 1.1
+Непонятки:
+- В условии нарисовано распределение с другими параметрами. Верить тексту и не смотреть на картинку?
+- Кириллические символы не печатаются в заголовке
+
+```{r task_1}
+integrate(dnorm, 25, 50, mean = 3, sd = 0.5)
+```
+
+### 1.2
+```{r task_2}
+integrate(dnorm, qnorm(0.1, mean = 3, sd = 0.5), qnorm(0.9, mean = 3, sd = 0.5), mean = 3, sd = 0.5)
+```

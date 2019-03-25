@@ -1,0 +1,23 @@
+---
+title: "hw1"
+author: "Алексей Федоренко"
+date: "2/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+```
+
+### 4.1
+```{r task_1}
+read.csv('https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data/students/fdarenk/hw4_Advanced_Bayesian/hw4_caretta.csv')
+
+```
+
+### 4.2
+```{r task_2}
+
+```

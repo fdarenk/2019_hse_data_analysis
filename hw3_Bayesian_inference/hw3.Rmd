@@ -1,0 +1,42 @@
+---
+title: "hw1"
+author: "Алексей Федоренко"
+date: "2/4/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(ggplot2)
+```
+
+### 3.1
+
+```{r task_1}
+read.csv('https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data/students/fdarenk/hw2_Bayesian_inference/hw2_phoible.csv') %>%
+  mutate(cons.ratio = consonants/phonemes) %>%
+  arrange(cons.ratio) -> cons.data
+
+sd_prior <- 6 
+sd_data <- sd(cons.data$cons.ratio)
+sd_post <- (1/sd_prior+1/sd_data)^(-1)
+mean_prior <- 22
+mean_data <- mean(cons.data$cons.ratio)
+mean_post <- weighted.mean(c(mean_prior, mean_data), c(1/sd_prior, 1/sd_data))
+print(mean_post)
+data_frame(x = rep(1:50, 3),
+           density = c(dnorm(unique(x), mean = mean_prior, sd = sd_prior),
+                       dnorm(unique(x), mean = mean_data, sd = sd_data),
+                       dnorm(unique(x), mean = mean_post, sd = sd_post)),
+           dataset = rep(c("prior", "data", "posterior"), each = 50)) %>% 
+  ggplot(aes(x, density, color = dataset))+
+  geom_line()
+
+
+```
+
+### 3.2
+```{r task_2}
+read.csv('https://raw.githubusercontent.com/agricolamz/2019_data_analysis_for_linguists/master/data/letter_frequency.csv')
+```
